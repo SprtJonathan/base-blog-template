@@ -13,6 +13,7 @@ if (Array.isArray(JSON.parse(localStorage.getItem("articles")))) {
   articles = localStorage.getItem("articles");
 }
 
+
 function submitArticle(e) {
   e.preventDefault();
 
@@ -24,9 +25,7 @@ function submitArticle(e) {
   const cover = articleCover.value;
   const content = articleContent.innerHTML;
 
-  const articleId = title.replace(/\s+/g, "").toLowerCase() + "_" + Date.now();
-
-  console.log(title);
+  const articleId = title.replace(/\s+/g, "_").toLowerCase() + "_" + Date.now();
 
   const newArticle = {
     articleId: articleId,
@@ -55,22 +54,31 @@ function displayArticles() {
 
     const articlesSection = document.getElementById("artilces-list");
     articles.forEach((article) => {
-      const articleContainer = document.createElement("article");
+      const articleContainer = document.createElement("a");
       articleContainer.setAttribute("id", article.articleId + "-card");
       articleContainer.setAttribute("class", "article-card");
+      articleContainer.setAttribute(
+        "href",
+        "./article.html?id=" + article.articleId
+      );
 
       const articleTitleImage = document.createElement("div");
       articleTitleImage.setAttribute("class", "article-title-image");
 
       const articleTitle = document.createElement("p");
-      articleTitle.innerHTML = article.articleTitle;
+      articleTitle.setAttribute("class", "article-title");
+      articleTitle.innerText = article.articleTitle;
+
+      const articleImageContainer = document.createElement("div");
+      articleImageContainer.setAttribute("class", "article-cover-container");
 
       const articleImage = document.createElement("img");
       articleImage.setAttribute("class", "article-cover");
       articleImage.setAttribute("src", article.articleCover);
 
       articleContainer.appendChild(articleTitleImage);
-      articleTitleImage.appendChild(articleImage);
+      articleTitleImage.appendChild(articleImageContainer);
+      articleImageContainer.appendChild(articleImage);
       articleTitleImage.appendChild(articleTitle);
       articlesSection.appendChild(articleContainer);
     });

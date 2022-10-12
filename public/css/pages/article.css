@@ -1,0 +1,26 @@
+.article-content {
+  /* From https://css.glass */
+  background: rgb(255, 255, 255);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  width: 95%;
+  height: fit-content;
+  margin: 1rem auto;
+
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.back-to-home {
+  color: black;
+  margin: 0.5rem 0;
+}
+
+.back-to-home:hover {
+  transform: scale(1.1);
+}

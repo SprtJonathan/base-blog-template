@@ -42,46 +42,12 @@
       </div>
     </header>
     <main class="page-content">
-      <section id="write-article" class="title-content">
-        <h2>Nouvel Article :</h2>
-        <form class="new-article-form" onsubmit="submitArticle( event )">
-          <div class="form-group">
-            <label for="article-title">Titre de votre article</label>
-            <input
-              type="text"
-              id="article-title"
-              name="article-title"
-              placeholder="Titre de l'article"
-              required
-            />
-          </div>
-          <div class="form-group">
-            <label for="article-cover">Image d'illustration</label>
-            <input
-              type="link"
-              id="article-cover"
-              name="article-cover"
-              placeholder="Couverture de l'article"
-              required
-            />
-          </div>
-          <div class="form-group">
-            <label for="article-content">Contenu</label>
-            <div id="article-content" class="text-editor"></div>
-            <!-- <textarea
-              id="article-content"
-              name="article-content"
-              rows="5"
-              cols="33"
-            ></textarea> -->
-          </div>
-          <button id="submit-article" class="form-submit" type="submit">
-            Publier l'article
-          </button>
-        </form>
+      <section id="undefined-article" class="article-content">
+        <h1>Erreur : Cet article n'existe pas</h1>
+        <a href="./" class="back-to-home">Retour à la page d'accueil</a>
       </section>
-      <section id="artilces-list" class="articles-list"></section>
+      <section id="article-content" class="article-content"></section>
     </main>
   </body>
-  <script src="./index.js"></script>
+  <script src="./article.js"></script>
 </html>

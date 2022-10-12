@@ -1,7 +1,11 @@
 body {
   font-family: Roboto, sans-serif;
   font-size: 12px;
-  background-image: linear-gradient(45deg, rgb(195, 0, 255), rgb(0, 195, 255));
+  background-image: linear-gradient(
+    45deg,
+    rgb(213, 213, 213),
+    rgb(173, 173, 173)
+  );
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -27,6 +31,15 @@ body {
   width: 30%;
   margin: 0;
   padding: 0;
+  overflow: hidden;
+}
+
+.navbar-three-block:nth-child(1) {
+  display: none;
+}
+
+.navbar-three-block:nth-child(2) {
+  width: 60%;
 }
 
 .navbar-three-block:nth-child(3) {
@@ -48,7 +61,7 @@ a {
   transition: all 0.2s ease-in-out;
 }
 
-a:hover {
+.navbar a:hover {
   color: rgb(208, 255, 255);
   font-weight: 800;
   transition: all 0.2s ease-in-out;
@@ -107,5 +120,13 @@ button:hover {
 @media (min-width: 768px) {
   body {
     font-size: 14px;
+  }
+
+  .navbar-three-block:nth-child(1) {
+    display: flex;
+  }
+
+  .navbar-three-block:nth-child(2) {
+    width: 20%;
   }
 }
