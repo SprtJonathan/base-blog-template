@@ -1,11 +1,7 @@
 body {
   font-family: Roboto, sans-serif;
   font-size: 12px;
-  background-image: linear-gradient(
-    45deg,
-    rgb(213, 213, 213),
-    rgb(173, 173, 173)
-  );
+  background-color: white;
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -17,7 +13,6 @@ body {
   height: 70px;
   justify-content: space-between;
   background: rgba(0, 31, 45, 0.692);
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(5px);
   width: 100%;
@@ -47,9 +42,21 @@ body {
 }
 
 main {
+  height: fit-content;
 }
 
-h1 {
+footer {
+  height: 70px;
+  justify-content: space-between;
+  background: rgba(0, 31, 45, 0.692);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  width: 100%;
+}
+
+h1,
+h2 {
+  color: black;
 }
 
 a {
