@@ -1,21 +1,21 @@
-const articleContentContainer = document.getElementById("article-content");
+const dbURL = "http://localhost:3000/api/";
 
-if (!localStorage.getItem("articles")) {
-  let array = [];
-  localStorage.setItem("articles", JSON.stringify(array));
-}
+const articleContentContainer = document.getElementById("article-content");
 
 let articles;
 
-if (Array.isArray(JSON.parse(localStorage.getItem("articles")))) {
-  articles = JSON.parse(localStorage.getItem("articles"));
-} else {
-  articles = localStorage.getItem("articles");
-}
-
-
 function submitArticle(e) {
   e.preventDefault();
+
+  const date = new Date();
+
+  const formattedDate = date.toLocaleString("en-GB", {
+    day: "numeric",
+    month: "short",
+    year: "numeric",
+    hour: "numeric",
+    minute: "2-digit",
+  });
 
   const articleTitle = document.getElementById("article-title");
   const articleCover = document.getElementById("article-cover");
@@ -29,29 +29,31 @@ function submitArticle(e) {
 
   const newArticle = {
     articleId: articleId,
+    userId: userId,
     articleTitle: title,
     articleCover: cover,
     articleContent: content,
+    creationDate: formattedDate,
+    modificationDate: formattedDate,
   };
-
-  if (!Array.isArray(articles)) {
-    console.log("no articles yet");
-    let newArray = [newArticle];
-    articles = newArray;
-  } else {
-    articles = JSON.parse(localStorage.getItem("articles"));
-    articles.push(newArticle);
-  }
-
-  console.log(articles);
-  localStorage.setItem("articles", JSON.stringify(articles));
 }
 
-function displayArticles() {
-  console.log(articles);
-  if (Array.isArray(articles)) {
-    articles = JSON.parse(localStorage.getItem("articles"));
+async function fetchArticles() {
+  let fetchedData;
 
+  const res = await fetch(dbURL + "articles");
+
+  fetchedData = await res.json();
+
+  console.log(fetchedData);
+  displayArticles(fetchedData);
+}
+
+function displayArticles(fetchedData) {
+  articles = fetchedData;
+  console.log(articles);
+
+  if (articles.length > 0) {
     const articlesSection = document.getElementById("artilces-list");
     articles.forEach((article) => {
       const articleContainer = document.createElement("a");
@@ -85,7 +87,7 @@ function displayArticles() {
   }
 }
 
-displayArticles();
+fetchArticles();
 
 const editorOptions = {
   debug: "info",

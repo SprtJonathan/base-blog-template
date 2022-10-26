@@ -4,35 +4,209 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vanilla project base</title>
     <meta name="description" content="" />
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="./public/assets/img/Unofficial_JavaScript_logo_2.svg"
+    />
+
+    <link rel="stylesheet" href="./public/css/main.css" />
+
     <script
       src="https://kit.fontawesome.com/b4819ea1c6.js"
       crossorigin="anonymous"
     ></script>
-    <link rel="stylesheet" href="./public/css/main.css" />
+
+    <!-- Core build with no theme, formatting, non-essential modules -->
+    <link href="//cdn.quilljs.com/1.3.6/quill.core.css" rel="stylesheet" />
+    <script src="//cdn.quilljs.com/1.3.6/quill.core.js"></script>
+    <!-- Main Quill library -->
+    <script src="//cdn.quilljs.com/1.3.6/quill.js"></script>
+    <!-- Theme included stylesheets -->
+    <link href="//cdn.quilljs.com/1.3.6//quill.snow.css" rel="stylesheet" />
+    <link href="//cdn.quilljs.com/1.3.6/quill.bubble.css" rel="stylesheet" />
   </head>
   <body>
-    <header class="navbar">
-      <a href="./login"><i class="fa-solid fa-circle-user"></i> Se connecter</a>
+    <header>
+      <nav class="navbar">
+        <div class="navbar-three-block"></div>
+        <div class="navbar-three-block">
+          <a href="./"
+            ><img
+              src="./public/assets/img/website-logo.png"
+              alt="Website Logo"
+              width="90%"
+          /></a>
+        </div>
+        <div class="navbar-three-block">
+          <a href="./login.html"><i class="fa fa-user"></i> Se connecter</a>
+        </div>
+      </nav>
     </header>
     <main class="page-content">
-      <div class="title-content">
-        <img
-          src="./public/assets/img/Unofficial_JavaScript_logo_2.svg"
-          alt="Javascript logo"
-          id="title-image"
-          class="title-image"
-          width="40px"
-          height="40px"
-        />
-        <h1 class="title">Vanilla project base</h1>
-        <p>
-          This is a basic project to get started with a new vanilla JS project.
-        </p>
-        <button class="rotate-button" onclick="rotateImage()">
-          Rotate image
-        </button>
-      </div>
+      <section id="auth-block" class="title-content">
+        <div class="authentification-select">
+          <div id="login-form-button" class="auth-select-block">
+            <span class="auth-select-text">Login</span>
+          </div>
+          <div id="register-form-button" class="auth-select-block">
+            <span class="auth-select-text">Register</span>
+          </div>
+        </div>
+        <article id="login-form" class="form-block-auth">
+          <h2>Connexion</h2>
+          <div class="form-group">
+            <label for="credentials">Adresse email ou nom d'utilisateur</label>
+            <input
+              type="text"
+              autocomplete="username"
+              class="form-control"
+              id="credentials"
+              aria-describedby="emailHelp"
+              placeholder="Email ou nom d'utilisateur"
+              required
+            />
+
+            <label for="password">Mot de passe</label>
+
+            <input
+              type="password"
+              class="form-control"
+              id="login-password"
+              autocomplete="current-password"
+              placeholder="Mot de passe"
+              required
+            />
+          </div>
+          <button
+            id="login-button"
+            type="submit"
+            class="btn btn-primary button"
+          >
+            Connexion
+          </button>
+        </article>
+        <article id="register-form" class="form-block-auth">
+          <h2>Inscription</h2>
+          <label for="username">Nom d'utilisateur</label>
+          <div id="username-block" class="username-block">
+            <input
+              class="form-control"
+              id="username"
+              type="text"
+              autocomplete="username"
+              v-model="username"
+              placeholder="Nom d'utilisateur"
+              required
+            />
+            <button
+              class="btn btn-secondary"
+              alt="Générer un pseudonyme aléatoire"
+              title="Pseudonyme aléatoire"
+              @click="readRandLine()"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="currentColor"
+                aria-label="Pseudonyme aléatoire"
+                class="bi bi-arrow-counterclockwise"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M8 3a5 5 0 1 1-4.546 2.914.5.5 0 0 0-.908-.417A6 6 0 1 0 8 2v1z"
+                />
+                <path
+                  d="M8 4.466V.534a.25.25 0 0 0-.41-.192L5.23 2.308a.25.25 0 0 0 0 .384l2.36 1.966A.25.25 0 0 0 8 4.466z"
+                />
+              </svg>
+            </button>
+          </div>
+
+          <label for="fname">Prénom</label>
+          <input
+            class="form-control"
+            id="fname"
+            type="text"
+            autocomplete="given-name"
+            v-model="fname"
+            placeholder="Prénom"
+            required
+          />
+
+          <label for="lname">Nom de famille</label>
+          <input
+            class="form-control"
+            id="lname"
+            type="text"
+            autocomplete="family-name"
+            v-model="lname"
+            placeholder="Nom"
+            required
+          />
+
+          <label for="email">Adresse email</label>
+          <input
+            type="email"
+            v-model="email"
+            class="form-control"
+            id="email"
+            autocomplete="email"
+            aria-describedby="emailHelp"
+            placeholder="Email"
+            required
+          />
+
+          <label for="password">Mot de passe</label>
+          <input
+            type="password"
+            class="form-control"
+            id="password"
+            autocomplete="new-password"
+            v-model="password"
+            placeholder="Mot de passe"
+            required
+          />
+          <label for="password">Confirmation du mot de passe</label>
+          <input
+            type="password"
+            class="form-control"
+            id="password-confirmation"
+            autocomplete="new-password"
+            v-model="passwordConfirmation"
+            placeholder="Confirmez le mot de passe"
+            required
+          />
+          <button
+            type="submit"
+            class="btn btn-primary button"
+            @click="register"
+          >
+            S'inscrire
+          </button>
+        </article>
+        <div
+          v-show="hasError"
+          id="errorAlert"
+          title="BootstrapVue"
+          class="container alert-danger"
+          static
+          no-auto-hide
+        >
+          {{ formError }}
+        </div>
+      </section>
     </main>
+    <!-- <footer>
+      <a href="./"
+        ><img
+          src="./public/assets/img/website-logo.png"
+          alt="Website Logo"
+          width="90%"
+      /></a>
+    </footer> -->
   </body>
-  <script src="./index.js"></script>
+  <script src="./login.js"></script>
 </html>

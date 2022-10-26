@@ -1,4 +1,5 @@
 @import "./tools/animations.css";
 @import "./base/common.css";
+@import "./pages/auth.css";
 @import "./pages/index.css";
 @import "./pages/article.css";

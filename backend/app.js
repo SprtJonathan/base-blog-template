@@ -44,11 +44,11 @@ app.use(helmet.frameguard({ action: "sameorigin" }));
 
 app.use("/images", express.static(path.join(__dirname, "images"))); // Permet de charger les images contenues dans le dossier image de l'application
 
-const postRoutes = require("./routes/article"); // Routes utilisées pour les articles
+const articleRoutes = require("./routes/article"); // Routes utilisées pour les articles
 const userRoutes = require("./routes/user"); // Routes utilisées pour les utilisateurs;
 const commentRoutes = require("./routes/comment"); // Routes utilisées pour les commentaires;
 
-app.use("/api/posts", postRoutes);
+app.use("/api/articles", articleRoutes);
 app.use("/api/auth", userRoutes);
 app.use("/api/comments", commentRoutes);
 
