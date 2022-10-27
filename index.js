@@ -1,4 +1,35 @@
-const dbURL = "http://localhost:3000/api/";
+const apiURL = "http://localhost:3000/api/";
+
+const userConnected = document.getElementById("user-connected");
+const userNotConnected = document.getElementById("user-not-connected");
+
+const token = localStorage.getItem("token");
+const userInfos = JSON.parse(localStorage.getItem("user"));
+
+if (token) {
+  userNotConnected.style.display = "none";
+  userConnected.style.display = "flex";
+
+  const userName = document.getElementById("menu-username");
+  userName.textContent = "Bonjour " + userInfos.username;
+
+  const userProfilePicture = document.getElementById(
+    "menu-user-profile-picture"
+  );
+  userProfilePicture.setAttribute("src", userInfos.profilePictureUrl);
+} else {
+  userNotConnected.style.display = "flex";
+  userConnected.style.display = "none";
+}
+
+const logoutButton = document.getElementById("logout");
+logoutButton.addEventListener("click", () => {
+  if (token) {
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
+  }
+  window.location.reload();
+});
 
 const articleContentContainer = document.getElementById("article-content");
 
@@ -41,7 +72,7 @@ function submitArticle(e) {
 async function fetchArticles() {
   let fetchedData;
 
-  const res = await fetch(dbURL + "articles");
+  const res = await fetch(apiURL + "articles");
 
   fetchedData = await res.json();
 

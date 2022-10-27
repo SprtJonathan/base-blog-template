@@ -39,7 +39,26 @@
           /></a>
         </div>
         <div class="navbar-three-block">
-          <a href="./login.html"><i class="fa fa-user"></i> Se connecter</a>
+          <div id="user-connected">
+            <a class="navbar-link" href="./profile.html"
+              ><div class="menu-profile-picture-block">
+                <img
+                  id="menu-user-profile-picture"
+                  crossorigin="anonymous"
+                  width="32px"
+                  height="32px"
+                  alt=""
+                />
+              </div>
+              <span id="menu-username">Profil</span></a
+            >
+            <a class="navbar-link" href="#" id="logout">Se déconnecter</a>
+          </div>
+          <div id="user-not-connected">
+            <a class="navbar-link" href="./login.html"
+              ><i class="fa fa-user"></i> Se connecter</a
+            >
+          </div>
         </div>
       </nav>
     </header>

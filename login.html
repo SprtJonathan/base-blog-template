@@ -44,7 +44,7 @@
       </nav>
     </header>
     <main class="page-content">
-      <section id="auth-block" class="title-content">
+      <section id="auth-block" class="auth-section">
         <div class="authentification-select">
           <div id="login-form-button" class="auth-select-block">
             <span class="auth-select-text">Login</span>
@@ -88,18 +88,20 @@
         </article>
         <article id="register-form" class="form-block-auth">
           <h2>Inscription</h2>
-          <label for="username">Nom d'utilisateur</label>
-          <div id="username-block" class="username-block">
-            <input
-              class="form-control"
-              id="username"
-              type="text"
-              autocomplete="username"
-              v-model="username"
-              placeholder="Nom d'utilisateur"
-              required
-            />
-            <button
+
+          <div class="form-group">
+            <label for="username">Nom d'utilisateur</label>
+            <div id="username-block" class="username-block">
+              <input
+                class="form-control"
+                id="username"
+                type="text"
+                autocomplete="username"
+                v-model="username"
+                placeholder="Nom d'utilisateur"
+                required
+              />
+              <!-- <button
               class="btn btn-secondary"
               alt="Générer un pseudonyme aléatoire"
               title="Pseudonyme aléatoire"
@@ -122,81 +124,77 @@
                   d="M8 4.466V.534a.25.25 0 0 0-.41-.192L5.23 2.308a.25.25 0 0 0 0 .384l2.36 1.966A.25.25 0 0 0 8 4.466z"
                 />
               </svg>
-            </button>
+            </button> -->
+            </div>
+
+            <label for="fname">Prénom</label>
+            <input
+              class="form-control"
+              id="fname"
+              type="text"
+              autocomplete="given-name"
+              v-model="fname"
+              placeholder="Prénom"
+              required
+            />
+
+            <label for="lname">Nom de famille</label>
+            <input
+              class="form-control"
+              id="lname"
+              type="text"
+              autocomplete="family-name"
+              v-model="lname"
+              placeholder="Nom"
+              required
+            />
+
+            <label for="email">Adresse email</label>
+            <input
+              type="email"
+              class="form-control"
+              id="email"
+              autocomplete="email"
+              aria-describedby="emailHelp"
+              placeholder="Email"
+              required
+            />
+
+            <label for="password">Mot de passe</label>
+            <input
+              type="password"
+              class="form-control"
+              id="password"
+              autocomplete="new-password"
+              placeholder="Mot de passe"
+              required
+            />
+            <label for="password">Confirmation du mot de passe</label>
+            <input
+              type="password"
+              class="form-control"
+              id="password-confirmation"
+              autocomplete="new-password"
+              v-model="passwordConfirmation"
+              placeholder="Confirmez le mot de passe"
+              required
+            />
           </div>
-
-          <label for="fname">Prénom</label>
-          <input
-            class="form-control"
-            id="fname"
-            type="text"
-            autocomplete="given-name"
-            v-model="fname"
-            placeholder="Prénom"
-            required
-          />
-
-          <label for="lname">Nom de famille</label>
-          <input
-            class="form-control"
-            id="lname"
-            type="text"
-            autocomplete="family-name"
-            v-model="lname"
-            placeholder="Nom"
-            required
-          />
-
-          <label for="email">Adresse email</label>
-          <input
-            type="email"
-            v-model="email"
-            class="form-control"
-            id="email"
-            autocomplete="email"
-            aria-describedby="emailHelp"
-            placeholder="Email"
-            required
-          />
-
-          <label for="password">Mot de passe</label>
-          <input
-            type="password"
-            class="form-control"
-            id="password"
-            autocomplete="new-password"
-            v-model="password"
-            placeholder="Mot de passe"
-            required
-          />
-          <label for="password">Confirmation du mot de passe</label>
-          <input
-            type="password"
-            class="form-control"
-            id="password-confirmation"
-            autocomplete="new-password"
-            v-model="passwordConfirmation"
-            placeholder="Confirmez le mot de passe"
-            required
-          />
           <button
             type="submit"
             class="btn btn-primary button"
-            @click="register"
+            id="register-button"
           >
             S'inscrire
           </button>
         </article>
         <div
-          v-show="hasError"
           id="errorAlert"
           title="BootstrapVue"
           class="container alert-danger"
           static
           no-auto-hide
-        >
-          {{ formError }}
-        </div>
+        ></div>
       </section>
     </main>
     <!-- <footer>

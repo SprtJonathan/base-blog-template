@@ -1,3 +1,25 @@
+.auth-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 300px;
+  height: fit-content;
+  padding: 10px;
+  margin: 1rem auto;
+
+  color: whitesmoke;
+
+  /* From https://css.glass */
+  background: rgba(115, 120, 135, 0.5);
+  border-radius: 16px;
+  box-shadow: 0 0px 5px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+
 .authentification-select {
   display: flex;
   flex-direction: row;
