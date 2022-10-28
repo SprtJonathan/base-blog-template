@@ -1,7 +1,7 @@
 const db = require("../config/config"); // Importation de la configuration de la connexion à la BDD
 const helper = require("../helpers/backend.js"); // Helper permettant de ne pas répéter les requêtes
 
-const errorCode = "500";
+const errorCode = 500;
 const errorMessage = "Une erreur s'est produite, veuillez réessayer";
 
 exports.getAllArticles = (req, res, _next) => {
@@ -14,7 +14,8 @@ exports.getAllArticles = (req, res, _next) => {
 exports.getOneArticle = (req, res, next) => {
   // Récupération d'un article en particulier grâce à son ID et récupération de l'ID de l'auteur
   let sql = `SELECT * FROM articles INNER JOIN users ON articles.userId = users.userId WHERE articleId=?; `;
-  let articleId = req.params.articleId;
+  console.log(req.params);
+  let articleId = req.params.id;
 
   helper.data.sqlRequestWithParameters(
     sql,
@@ -42,17 +43,25 @@ exports.getArticlesFromUser = (req, res, next) => {
 exports.createArticle = (req, res, next) => {
   // Création d'un article en envoyant les informations requises à la BDD comme le titre, le contenu et l'auteur
   let articleTitle = req.body.articleTitle;
+  let articleCover = req.body.articleCover;
   let articleContent = req.body.articleContent;
   let userId = req.body.userId;
-  // console.log("Article Title " + articleTitle)
-  // console.log("Article Content " + articleContent)
-  // console.log("Article creator " + userId)
-  let sql = `INSERT INTO articles (articleTitle, articleContent, userId, creationDate ) VALUES (?,?,?,CURRENT_TIMESTAMP)`;
+  // console.log("Article Title " + articleTitle);
+  console.log("Article Cover " + articleCover);
+  // console.log("Article Content " + articleContent);
+  // console.log("Article creator " + userId);
+  let sql = `INSERT INTO articles (articleTitle, articleCover, articleContent, userId, creationDate ) VALUES (?,?,?,?,CURRENT_TIMESTAMP)`;
 
-  db.query(sql, [articleTitle, articleContent, userId], (err, result) => {
-    if (err) throw err;
-    res.status(201).json({ message: "Article créé!" });
-  });
+  db.query(
+    sql,
+    [articleTitle, articleCover, articleContent, userId],
+    (err, result) => {
+      if (err) {
+        throw err;
+      }
+      res.status(201).json({ message: "Article créé!" });
+    }
+  );
 };
 
 exports.modifyArticle = (req, res, next) => {

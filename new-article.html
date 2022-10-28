@@ -30,8 +30,11 @@
     <header>
       <nav class="navbar">
         <div class="navbar-three-block">
-          <div id="new-article-page">
-            <a href="./new-article.html" class="navbar-link"
+          <div>
+            <a
+              href="./new-article.html"
+              id="new-article-page"
+              class="navbar-link"
               ><i class="fa fa-plus-square"></i> Écrire un article</a
             >
           </div>
@@ -69,7 +72,55 @@
       </nav>
     </header>
     <main class="page-content">
-      <section id="artilces-list" class="articles-list"></section>
+      <section id="write-article" class="title-content">
+        <h2>Nouvel Article :</h2>
+        <form class="new-article-form" onsubmit="submitArticle( event )">
+          <div class="form-group">
+            <label for="article-title">Titre de votre article</label>
+            <input
+              type="text"
+              id="article-title"
+              name="article-title"
+              placeholder="Titre de l'article"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="article-cover">Image d'illustration</label>
+            <input
+              type="link"
+              id="article-cover"
+              name="article-cover"
+              placeholder="Couverture de l'article"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="article-content">Contenu</label>
+            <div id="article-content" class="text-editor"></div>
+            <!-- <textarea
+              id="article-content"
+              name="article-content"
+              rows="5"
+              cols="33"
+            ></textarea> -->
+          </div>
+          <button id="submit-article" class="form-submit" type="submit">
+            Publier l'article
+          </button>
+        </form>
+      </section>
+      <section id="error-unauthorized" class="title-content">
+        <h2>Erreur :</h2>
+        <p>Vous n'avez pas l'autorisation d'accéder à cette page.</p>
+        <p>
+          S'il s'agit d'une erreur, merci de contacter un administrateur du
+          site.
+        </p>
+        <div class="form-submit">
+          <a href="./index.html">Retourner à la page d'accueil</a>
+        </div>
+      </section>
     </main>
     <!-- <footer>
       <a href="./"
@@ -81,5 +132,5 @@
     </footer> -->
   </body>
   <script src="./header.js"></script>
-  <script src="./index.js"></script>
+  <script src="./new-article.js"></script>
 </html>

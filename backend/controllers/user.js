@@ -156,7 +156,7 @@ exports.deleteAccount = (req, res, next) => {
   const userId = decodedToken.userId;
   const roleId = decodedToken.roleId;
   const userProfileId = req.params.id;
-  if (roleId == 1 || userId == userProfileId) {
+  if (roleId == 2 || userId == userProfileId) {
     // Si l'utilisateur est admin ou que l'ID du profil est le même que celui de l'utilisateur authentifié
     let sql = `DELETE FROM users WHERE userId = ?`; // On effectue la commande de suppression de l'utilisateur grâce à son ID
     sql = mysql.format(sql, [userProfileId]);
@@ -211,7 +211,7 @@ exports.editProfilePicture = (req, res, next) => {
   )}/images/userProfilePictures/uploads/${req.file.filename}`;
   const userProfileId = req.params.id;
 
-  if (roleId == 1 || userToEdit == userId) {
+  if (roleId == 2 || userToEdit == userId) {
     // Si l'utilisateur est admin ou que l'ID du profil est le même que celui de l'utilisateur authentifié
     if (
       profilePicture !=
@@ -355,7 +355,7 @@ exports.editAccountAdmin = (req, res, next) => {
       " admin? " +
       roleId
   );
-  if (roleId == 1 || userToEdit == userId) {
+  if (roleId == 2 || userToEdit == userId) {
     if (
       username == null ||
       email == null ||

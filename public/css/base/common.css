@@ -31,6 +31,8 @@ body {
 
 .navbar-three-block:nth-child(1) {
   display: none;
+  justify-content: flex-start;
+  align-items: center;
 }
 
 .navbar-three-block:nth-child(2) {
@@ -49,7 +51,7 @@ body {
 }
 
 .navbar-link i {
-  margin: .2rem;
+  margin: 0.2rem;
 }
 
 .menu-profile-picture-block {
@@ -60,7 +62,7 @@ body {
   width: 30px;
   height: 30px;
   overflow: hidden;
-  margin: .2rem;
+  margin: 0.2rem;
 }
 
 main {

@@ -19,18 +19,45 @@
   </head>
   <body>
     <header class="navbar">
-      <div class="navbar-three-block"></div>
-      <div class="navbar-three-block">
-        <a href="./"
-          ><img
-            src="./public/assets/img/website-logo.png"
-            alt="Website Logo"
-            width="90%"
-        /></a>
-      </div>
-      <div class="navbar-three-block">
-        <a href="./login.html"><i class="fa fa-user"></i> Se connecter</a>
-      </div>
+      <nav class="navbar">
+        <div class="navbar-three-block">
+          <div id="new-article-page">
+            <a href="./new-article.html" class="navbar-link"
+              ><i class="fa fa-plus-square"></i> Écrire un article</a
+            >
+          </div>
+        </div>
+        <div class="navbar-three-block">
+          <a href="./"
+            ><img
+              src="./public/assets/img/website-logo.png"
+              alt="Website Logo"
+              width="90%"
+          /></a>
+        </div>
+        <div class="navbar-three-block">
+          <div id="user-connected">
+            <a class="navbar-link" href="./profile.html"
+              ><div class="menu-profile-picture-block">
+                <img
+                  id="menu-user-profile-picture"
+                  crossorigin="anonymous"
+                  width="32px"
+                  height="32px"
+                  alt=""
+                />
+              </div>
+              <span id="menu-username">Profil</span></a
+            >
+            <a class="navbar-link" href="#" id="logout">Se déconnecter</a>
+          </div>
+          <div id="user-not-connected">
+            <a class="navbar-link" href="./login.html"
+              ><i class="fa fa-user"></i> Se connecter</a
+            >
+          </div>
+        </div>
+      </nav>
     </header>
     <main class="page-content">
       <section id="undefined-article" class="article-content">
@@ -40,5 +67,6 @@
       <section id="article-content" class="article-content"></section>
     </main>
   </body>
+  <script src="./header.js"></script>
   <script src="./article.js"></script>
 </html>
